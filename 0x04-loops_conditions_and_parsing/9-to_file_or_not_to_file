@@ -3,6 +3,7 @@
 if test -f school 
 then echo "file exists."
 else echo "file does not exist"
+     exit 1 
 fi
 if test -s school
 then echo "school file is not empty"
