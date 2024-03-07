@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #  Bash script that gives you information about the holbertonschool file.
 if test -f school 
-then echo "file exists."
-else echo "file does not exist"
+then echo "school file exists"
+else echo "school file does not exist"
      exit 1 
 fi
 if test -s school
