@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Script to install and setup HAProxy load balancer for two web servers
+
+sudo apt -y update
+sudo apt -y upgrade
+sudo apt -y install haproxy
+
+config="\nlisten load-balancer
+	bind *:80
+	mode http
+	balance roundrobin
+	option httpclose
+	option forwardfor
+	server 46996-web-01 44.200.168.223:80 check
+	server 46996-web-02 18.204.14.103:80 check"
+
+echo -e "$config" | sudo tee -a /etc/haproxy/haproxy.cfg
+sudo service haproxy restart
