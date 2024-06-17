@@ -1,7 +1,5 @@
 # Postmortem: June 15, 2024, Web Application Outage
 
-![Frustrated User](https://via.placeholder.com/600x150.png?text=Users+Frustration+Levels)
-
 ## Issue Summary
 **Duration:**  
 June 15, 2024, from 10:00 AM to 12:30 PM UTC
@@ -13,8 +11,6 @@ Our e-commerce platform went from being a well-oiled machine to a turtle in quic
 The culprit? An unoptimized database query that decided to take a scenic route, causing a sudden spike in CPU and memory usage on the primary database server.
 
 ## Timeline
-
-![Incident Timeline](https://via.placeholder.com/600x150.png?text=Incident+Timeline)
 
 - **10:00 AM UTC** - Issue detected via monitoring alert screaming "Database on fire!"
 - **10:05 AM UTC** - On-call engineer confirmed the high CPU usage on the primary database server.
