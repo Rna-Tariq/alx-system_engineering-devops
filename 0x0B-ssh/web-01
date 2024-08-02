@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# This script ssh into a machine using
+# the private key in ~/.ssh/school file
+
+ssh -i ~/.ssh/school ubuntu@54.209.205.163
