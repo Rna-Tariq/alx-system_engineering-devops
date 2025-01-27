@@ -15,15 +15,25 @@ def top_ten(subreddit):
     try:
         # Make a request to the Reddit API
         response = requests.get(url, headers=headers, params=params, allow_redirects=False)
-        # Check if the response status code is 200 (OK)
         if response.status_code == 200:
-            data = response.json()
-            posts = data.get("data", {}).get("children", [])
-            for post in posts:
-                print(post["data"]["title"])
-        else:
-            # For invalid subreddit or other errors
+            # Attempt to parse JSON
+            try:
+                data = response.json()
+                posts = data.get("data", {}).get("children", [])
+                if posts:
+                    for post in posts:
+                        print(post["data"]["title"])
+                else:
+                    print(None)
+            except ValueError:
+                # JSON parsing error
+                print(None)
+        elif response.status_code == 302:
+            # Redirect indicates invalid subreddit
             print(None)
-    except requests.exceptions.RequestException as e:
+        else:
+            # Other response codes
+            print(None)
+    except requests.exceptions.RequestException:
         # Handle any network-related errors
         print(None)
