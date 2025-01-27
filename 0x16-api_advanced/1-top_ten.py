@@ -13,13 +13,17 @@ def top_ten(subreddit):
     params = {"limit": 10}
 
     try:
+        # Make a request to the Reddit API
         response = requests.get(url, headers=headers, params=params, allow_redirects=False)
+        # Check if the response status code is 200 (OK)
         if response.status_code == 200:
             data = response.json()
             posts = data.get("data", {}).get("children", [])
             for post in posts:
                 print(post["data"]["title"])
         else:
+            # For invalid subreddit or other errors
             print(None)
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
+        # Handle any network-related errors
         print(None)
